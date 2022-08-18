@@ -35,8 +35,7 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository {
 	@Override
 	public Empleado buscar(Integer id) {
 		// TODO Auto-generated method stub
-		this.entityManager.find(Empleado.class,id);
-		return null;
+		return this.entityManager.find(Empleado.class,id);
 	}
 	
 
