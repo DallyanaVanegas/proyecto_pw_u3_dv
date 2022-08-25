@@ -43,13 +43,10 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository {
 	}
 
 	@Override
-	public List<Empleado> buscarPorSalario(BigDecimal salario) {
-		
-		TypedQuery<Empleado> query= this.entityManager
-				.createQuery("SELECT e FROM Empleado e WHERE e.salario > : salario",Empleado.class);
-		query.setParameter("salario", salario);	
-		return query.getResultList();
+	public List<Empleado> buscarPorSalario(BigDecimal salario){
+		TypedQuery<Empleado> myQuery = this.entityManager.createQuery("SELECT e FROM Empleado e WHERE e.salario > :salarioDato", Empleado.class);
+		myQuery.setParameter("salarioDato", salario);
+		return myQuery.getResultList();
 	}
-	
 
 }
