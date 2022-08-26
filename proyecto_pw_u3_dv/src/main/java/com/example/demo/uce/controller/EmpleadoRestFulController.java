@@ -61,8 +61,16 @@ public class EmpleadoRestFulController {
 	}
 	
 	@GetMapping
-	public List<Empleado> buscarPorSalario(@RequestParam(value = "sal") BigDecimal salario) {
+	public List<Empleado> buscarPorSalario(@RequestParam(value = "sal") BigDecimal salario,@RequestParam(value = "provincia") String provincia ) {
+		System.out.println(provincia);
 		return this.empleadoService.buscarPorSalario(salario);
 	}
+	
+/*
+	@GetMapping(path="/adicional")
+	public ResponseEntity<List<Empleado>> buscarPorSalario1(@RequestParam(value = "salario") BigDecimal salario) {
+		List<Empleado> datos = this.empleadoService.buscarPorSalario(salario);
+		return ResponseEntity.ok(datos);
+	}*/
 	
 }
