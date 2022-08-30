@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class EmpleadoRestFulController {
 	@Autowired
 	private IEmpleadoService empleadoService;
 	
-	@PostMapping
+	@PostMapping(consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
 	public String crear(@RequestBody Empleado empleado) {
 		String mensaje="Empleado insertado correctamente";
 		try {
@@ -47,7 +48,7 @@ public class EmpleadoRestFulController {
 		return mensaje;	
 	}
 	
-	@GetMapping(path = "/{idEmpleado}")
+	@GetMapping(path = "/{idEmpleado}",produces = MediaType.APPLICATION_XML_VALUE)
 	public ResponseEntity<Empleado> buscar(@PathVariable("idEmpleado") Integer id) {
 		Empleado empl = this.empleadoService.buscarPorId(id);
 		return ResponseEntity.ok(empl);
