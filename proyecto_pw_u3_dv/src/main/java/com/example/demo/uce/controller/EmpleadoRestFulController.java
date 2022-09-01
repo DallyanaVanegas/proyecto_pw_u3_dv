@@ -3,7 +3,11 @@ package com.example.demo.uce.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.uce.repository.modelo.Empleado;
 import com.example.demo.uce.service.IEmpleadoService;
+import com.example.demo.uce.service.to.EmpleadoTo;
+import com.example.demo.uce.service.to.HijoTo;
 
 @RestController
 @RequestMapping("/empleados")
@@ -61,7 +67,7 @@ public class EmpleadoRestFulController {
 		
 	}
 	
-	@GetMapping
+	@GetMapping(path = "/salarios")
 	public List<Empleado> buscarPorSalario(@RequestParam(value = "sal") BigDecimal salario,@RequestParam(value = "provincia") String provincia ) {
 		System.out.println(provincia);
 		return this.empleadoService.buscarPorSalario(salario);
@@ -73,5 +79,22 @@ public class EmpleadoRestFulController {
 		List<Empleado> datos = this.empleadoService.buscarPorSalario(salario);
 		return ResponseEntity.ok(datos);
 	}*/
+	
+	@GetMapping
+	public List<EmpleadoTo> buscarTodos() {
+		List<EmpleadoTo> lista =  this.empleadoService.todosLosEmpleados();
+		for(EmpleadoTo empl: lista) {
+			Link myLink = linkTo(methodOn(EmpleadoRestFulController.class).buscarHijos(empl.getId())).withRel("hijos");
+			empl.add(myLink);
+		}
+		return lista;
+	}
+	
+	@GetMapping(path ="/{idEmpleado}/hijos")
+	public List<HijoTo> buscarHijos(@PathVariable("idEmpleado") Integer idEmpleado){
+		return null;
+		
+	}
+	
 	
 }

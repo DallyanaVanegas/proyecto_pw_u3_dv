@@ -24,6 +24,7 @@ public class Estudiante {
 	@Column(name="estu_carrera")
 	private String carrera;
 	
+	
 	public Integer getId() {
 		return id;
 	}

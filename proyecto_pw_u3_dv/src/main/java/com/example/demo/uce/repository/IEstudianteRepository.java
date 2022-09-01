@@ -12,4 +12,5 @@ public interface IEstudianteRepository {
 	public Estudiante buscar (Integer id);
 	public List<Estudiante> buscarPorSemestre(Integer id);
 
+
 }
