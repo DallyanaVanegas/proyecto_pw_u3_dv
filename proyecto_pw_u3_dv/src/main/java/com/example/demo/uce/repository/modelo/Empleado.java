@@ -1,5 +1,6 @@
 package com.example.demo.uce.repository.modelo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @Table(name="empleado")
 public class Empleado {
 	
+	 private static final long serialVersionUID = 8799656478674716638L;
 	@Id
 	@Column(name="empl_id")
 	private Integer id;

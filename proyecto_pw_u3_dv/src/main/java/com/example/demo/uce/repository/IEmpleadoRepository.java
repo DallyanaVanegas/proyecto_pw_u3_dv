@@ -15,5 +15,5 @@ public interface IEmpleadoRepository {
 	public List<Empleado> buscarPorSalario(BigDecimal salario);
 	public List<Empleado> todosLosEmpleados();
 	
-	public List<Hijo> buscarHijosEmpleado(Integer id);
+	
 }

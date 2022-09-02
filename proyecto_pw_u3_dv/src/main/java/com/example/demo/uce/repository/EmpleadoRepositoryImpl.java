@@ -49,13 +49,11 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository {
 		myQuery.setParameter("salarioDato", salario);
 		return myQuery.getResultList();
 	}
-	
+	/*
 	@Override
 	public List<Hijo> buscarHijosEmpleado(Integer id){
-		TypedQuery<Hijo> myQuery = this.entityManager.createQuery("SELECT e FROM Hijo e WHERE e.empleado.id= :dato", Hijo.class);
-		myQuery.setParameter("dato", id);
-		return myQuery.getResultList();
-	}
+		
+	}*/
 
 	
 	@Override
