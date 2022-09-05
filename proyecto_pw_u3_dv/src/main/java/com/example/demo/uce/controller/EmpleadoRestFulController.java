@@ -48,7 +48,7 @@ public class EmpleadoRestFulController {
 		return mensaje;
 	}
 	
-	@PutMapping
+	@PutMapping(consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
 	public String actualizar(@RequestBody Empleado empleado) {
 		String mensaje="Empleado actualizado correctamente";
 		try {
